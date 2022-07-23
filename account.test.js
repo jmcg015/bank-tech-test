@@ -23,4 +23,14 @@ describe('Account', () => {
     })
   })
 
+  describe('Withdraw', () => {
+    //doesn't let you withdraw to negative numbers
+    it('withdraws 5.00 from the balance', () => {
+      const account = new Account();
+      account.deposit(50.00);
+      account.withdraw(5.00);
+      expect(account.showBalance()).toEqual(45.00);
+    })
+  })
+
 })
