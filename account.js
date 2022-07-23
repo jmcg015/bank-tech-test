@@ -1,7 +1,11 @@
 class Account {
+
+  constructor() {
+    this.balance = 0.00;
+  }
   showBalance() {
-    return 0.00;
+    return this.balance;
   }
 }
 
-module.exports = Account;
+module.exports = Account

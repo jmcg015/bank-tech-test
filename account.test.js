@@ -7,4 +7,5 @@ describe('Account', () => {
       expect(account.showBalance()).toEqual(0.00);
     })
   })
+
 })
