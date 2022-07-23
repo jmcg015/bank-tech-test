@@ -31,6 +31,14 @@ describe('Account', () => {
       account.withdraw(5.00);
       expect(account.showBalance()).toEqual(45.00);
     })
+
+    it('withdraws 5.00 and 41.50 from the balance', () => {
+      const account = new Account();
+      account.deposit(50.00);
+      account.withdraw(5.00);
+      account.withdraw(41.50);
+      expect(account.showBalance()).toEqual(3.50);
+    })
   })
 
 })
