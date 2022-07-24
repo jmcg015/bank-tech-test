@@ -16,11 +16,7 @@ class Transaction {
   }
 
   #formatOutput(item) {
-    if (item != null) {
-      return `${item.toFixed(2)} `;
-    } else {
-      return "";
-    }
+    return ((item != null) ? `${item.toFixed(2)} ` : "");
   }
 }
 
