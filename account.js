@@ -20,6 +20,10 @@ class Account {
     const now = new Date();
     return now.toLocaleDateString("en-GB");
   }
+
+  printStatement() {
+    return "date || credit || debit || balance\n24/07/2022 || || ||"
+  }
 }
 
 module.exports = Account
