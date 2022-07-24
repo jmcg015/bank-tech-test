@@ -3,7 +3,6 @@ const Statement = require('./statement')
 class Account {
 
   constructor() {
-    //this.statement = new Statement();
     this.balance = 0.00;
     this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
     this.credit = null;
