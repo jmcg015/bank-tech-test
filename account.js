@@ -12,7 +12,7 @@ class Account {
   deposit(amount) {
     this.balance += amount;
     this.allTransactions.unshift({ credit: amount, balance: this.balance} );
-    return `£${amount} deposited. Balance is £${this.balance}`
+    return `£${amount.toFixed(2)} deposited. Balance is £${this.balance.toFixed(2)}`
   }
 
   withdraw(amount) {

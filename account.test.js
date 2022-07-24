@@ -6,16 +6,15 @@ describe('Account', () => {
   describe('Deposit', () => {
     it("adds 5.00 to the balance", () => {
       const account = new Account();
-      expect(account.deposit(500.00)).toEqual("£500 deposited. Balance is £500");
+      expect(account.deposit(500.00)).toEqual("£500.00 deposited. Balance is £500.00");
     })
 
-  //   it("adds 50.00 and 1000.00 to the balance", () => {
-  //     const account = new Account();
-  //     account.deposit(50.00);
-  //     account.deposit(1000.00);
-  //     expect(account.showBalance()).toEqual(1050.00);
-  //   })
-  // })
+    it("adds 50.00 and 1000.00 to the balance", () => {
+      const account = new Account();
+      account.deposit(50.50);
+      expect(account.deposit(1000.00)).toEqual("£1000.00 deposited. Balance is £1050.50");
+    })
+
 
   // describe('Withdraw', () => {
   //   //doesn't let you withdraw to negative numbers

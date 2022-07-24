@@ -8,7 +8,7 @@ describe('printStatement', () => {
     Account.mockClear();
   });
 
-  xit('initially prints out an empty statment', () => {
+  xit('initially prints out an empty statement', () => {
     const statement = new Statement();
     expect(statement.printStatement()).toEqual("date || credit || debit || balance\n || || ||")
   })
