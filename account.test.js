@@ -52,4 +52,17 @@ describe('Account', () => {
     expect(account.display()).toEqual("24/07/2022 || 1000.00 || || 1000.00 ");
   })
 
+  it('initially prints out an empty statement', () => {
+    const account = new Account();
+    const date = "24/07/2022"
+    expect(account.printStatement()).toEqual(`date || credit || debit || balance\n${date} || || || 0.00 `)
+  })
+
+  xit('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
+    //const statement = new Statement();
+    const account = new Account();
+    account.deposit(100.00);
+    expect(account.printStatement()).toEqual("date || credit || debit || balance\n24/07/2022 || 100.00 || || 100.00 ")
+  })
+
 })

@@ -3,7 +3,7 @@ const Statement = require('./statement')
 class Account {
 
   constructor() {
-    this.statement = new Statement();
+    //this.statement = new Statement();
     this.balance = 0.00;
     this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
     this.credit = null;
@@ -37,8 +37,9 @@ class Account {
     return this.transactionDate;
   }
 
-  printStatement(transactions) {
-    return this.statement.printStatement(transactions);
+  printStatement() {
+    const HEADING = "date || credit || debit || balance";
+    return `${HEADING}\n${this.display()}`;
   }
 
   #formatOutput(item) {
