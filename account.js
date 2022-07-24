@@ -2,6 +2,7 @@ class Account {
 
   constructor() {
     this.balance = 0.00;
+    this.credits = [];
   }
 
   showBalance() {
@@ -9,6 +10,7 @@ class Account {
   }
 
   deposit(amount) {
+    this.credits.push(amount);
     return this.balance += amount;
   }
 
@@ -22,7 +24,9 @@ class Account {
   }
 
   printStatement() {
-    return "date || credit || debit || balance\n24/07/2022 || || ||"
+    const date = this.getTransactionDate();
+    const credit = this.credits.at(-1);
+    return `date || credit || debit || balance\n${date} || ${credit.toFixed(2)} || || ${this.balance.toFixed(2)}`;
   }
 }
 
