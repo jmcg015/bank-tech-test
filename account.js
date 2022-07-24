@@ -17,7 +17,8 @@ class Account {
   }
 
   getTransactionDate() {
-    return "24/07/2022";
+    const now = new Date();
+    return now.toLocaleDateString("en-GB");
   }
 }
 
