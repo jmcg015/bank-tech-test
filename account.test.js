@@ -4,7 +4,7 @@ describe('Account', () => {
   })
 
   describe('Deposit', () => {
-    it("adds 5.00 to the balance", () => {
+    it("adds 500 to the balance", () => {
       const account = new Account();
       expect(account.deposit(500.00)).toEqual("£500.00 deposited. Balance is £500.00");
     })
@@ -16,14 +16,12 @@ describe('Account', () => {
     })
 
 
-  // describe('Withdraw', () => {
-  //   //doesn't let you withdraw to negative numbers
-  //   it('withdraws 5.00 from the balance', () => {
-  //     const account = new Account();
-  //     account.deposit(50.00);
-  //     account.withdraw(5.00);
-  //     expect(account.showBalance()).toEqual(45.00);
-  //   })
+  describe('Withdraw', () => {
+    it('withdraws 100 from the balance of 1000', () => {
+      const account = new Account();
+      account.deposit(1000);
+      expect(account.withdraw(100)).toEqual("Withdrew £100.00. Balance is £900.00");
+    })
 
   //   it("won't withdraw if withdrawal is greater than balance", ()  => {
   //     const account = new Account();
@@ -37,7 +35,7 @@ describe('Account', () => {
   //     account.withdraw(41.50);
   //     expect(account.showBalance()).toEqual(3.50);
   //   })
-  // })
+   })
 
   // it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
   //   const account = new Account();

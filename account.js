@@ -4,26 +4,32 @@ const Transaction = require('./transaction')
 class Account {
 
   constructor(transaction = Transaction) {
-    this.balance = 0.00;
+    this.balance = 0;
     this.transaction = transaction;
     this.allTransactions = [];
   }
 
   deposit(amount) {
+    const creditAmount = this.#formatMoney(amount);
     this.balance += amount;
-    this.allTransactions.unshift({ credit: amount, balance: this.balance} );
-    return `£${amount.toFixed(2)} deposited. Balance is £${this.balance.toFixed(2)}`
+    this.allTransactions.unshift({ credit: amount, balance: this.balance});
+    return `£${creditAmount} deposited. Balance is £${this.#formatMoney(this.balance)}`
   }
 
   withdraw(amount) {
-    this.debit = amount
-    if (this.debit > this.balance) return "Must acquire additional resources"
-    return this.balance -= amount;
+    const debitAmount = this.#formatMoney(amount);
+    if (debitAmount > this.balance) return "Must acquire additional resources"
+    this.balance -= amount;
+    return `Withdrew £${debitAmount}. Balance is £${this.#formatMoney(this.balance)}`
   }
 
   printStatement() {
     const HEADING = "date || credit || debit || balance";
     return `${HEADING}\n${this.display()}`;
+  }
+
+  #formatMoney(value) {
+    return value.toFixed(2);
   }
 
 }
