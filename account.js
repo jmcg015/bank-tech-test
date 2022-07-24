@@ -1,30 +1,18 @@
 const Statement = require('./statement')
+const Transaction = require('./transaction')
 
 class Account {
 
-  constructor() {
+  constructor(transaction = Transaction) {
     this.balance = 0.00;
-    this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
-    this.credit = null;
-    this.debit = null;
-  }
-
-  display() {
-    return [
-      this.transactionDate,
-      this.#formatOutput(this.credit),
-      this.#formatOutput(this.debit),
-      this.#formatOutput(this.balance),
-    ].join("|| ")
-  }
-
-  showBalance() {
-    return this.balance;
+    this.transaction = transaction;
+    this.allTransactions = [];
   }
 
   deposit(amount) {
-    this.credit += amount;
-    return this.balance += amount;
+    this.balance += amount;
+    this.allTransactions.unshift({ credit: amount, balance: this.balance} );
+    return `£${amount} deposited. Balance is £${this.balance}`
   }
 
   withdraw(amount) {
@@ -33,20 +21,11 @@ class Account {
     return this.balance -= amount;
   }
 
-  getTransactionDate() {
-    return this.transactionDate;
-  }
-
   printStatement() {
     const HEADING = "date || credit || debit || balance";
     return `${HEADING}\n${this.display()}`;
   }
 
-  #formatOutput(item) {
-    if (item != null) {
-      return `${item.toFixed(2)} `;
-    }
-  }
 }
 
 module.exports = Account
