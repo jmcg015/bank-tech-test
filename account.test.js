@@ -41,4 +41,10 @@ describe('Account', () => {
     })
   })
 
+  it('shows the date', () => {
+    const account = new Account();
+    const mockedDate = "24/07/2022";
+    expect(account.getTransactionDate()).toEqual("24/07/2022");
+  })
+
 })

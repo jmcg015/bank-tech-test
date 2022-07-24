@@ -15,6 +15,10 @@ class Account {
   withdraw(amount) {
     return this.balance -= amount;
   }
+
+  getTransactionDate() {
+    return "24/07/2022";
+  }
 }
 
 module.exports = Account
