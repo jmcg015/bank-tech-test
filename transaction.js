@@ -1,9 +1,9 @@
 class Transaction {
-  constructor({ credit = null, debit = null } = {}) {
+  constructor({ credit = null, debit = null, balance = null } = {}) {
     this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
     this.credit = credit;
     this.debit = debit;
-    this.balance = 50
+    this.balance = balance
   }
 
   showTransaction() {
@@ -18,6 +18,8 @@ class Transaction {
   #formatOutput(item) {
     if (item != null) {
       return `${item.toFixed(2)} `;
+    } else {
+      return "";
     }
   }
 }

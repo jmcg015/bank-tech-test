@@ -4,24 +4,24 @@ describe("Transaction", () => {
   it("displays the date in DD/MM/YYYY format", () => {
     const transaction = new Transaction();
     const mockedDate = "24/07/2022"
-    expect(transaction.showTransaction()).toEqual(`${mockedDate} || || `);
+    expect(transaction.showTransaction()).toEqual(`${mockedDate} || || || `);
   })
 
   it("displays the credit amount", () => {
     const transaction = new Transaction({ credit: 100 });
     const mockedDate = "24/07/2022"
-    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || `);
+    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || || `);
   })
 
   it("displays the debit amount", () => {
     const transaction = new Transaction({ credit: 100, debit: 50 });
     const mockedDate = "24/07/2022"
-    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || 50.00 `);
+    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || 50.00 || `);
   })
 
   it("displays the balance", () => {
-    const transaction = new Transaction({ credit: 100, debit: 50 });
+    const transaction = new Transaction({ balance: 100 });
     const mockedDate = "24/07/2022"
-    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || 50.00 || 50.00 `);
+    expect(transaction.showTransaction()).toEqual(`${mockedDate} || || || 100.00 `);
   })
 })
