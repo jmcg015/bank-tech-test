@@ -32,6 +32,11 @@ describe('Account', () => {
       expect(account.showBalance()).toEqual(45.00);
     })
 
+    it("won't withdraw if withdrawal is greater than balance", ()  => {
+      const account = new Account();
+      expect(account.withdraw(50)).toEqual("Must acquire additional resources")
+    })
+
     it('withdraws 5.00 and 41.50 from the balance', () => {
       const account = new Account();
       account.deposit(50.00);
@@ -58,7 +63,7 @@ describe('Account', () => {
     expect(account.printStatement()).toEqual(`date || credit || debit || balance\n${date} || || || 0.00 `)
   })
 
-  xit('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
+  it('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
     //const statement = new Statement();
     const account = new Account();
     account.deposit(100.00);

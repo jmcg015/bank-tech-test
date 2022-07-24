@@ -30,6 +30,7 @@ class Account {
 
   withdraw(amount) {
     this.debit = amount
+    if (this.debit > this.balance) return "Must acquire additional resources"
     return this.balance -= amount;
   }
 
