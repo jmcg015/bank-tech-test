@@ -1,5 +1,5 @@
 class Transaction {
-  constructor({ credit = null, debit = 50 } = {}) {
+  constructor({ credit = null, debit = null } = {}) {
     this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
     this.credit = credit;
     this.debit = debit;
