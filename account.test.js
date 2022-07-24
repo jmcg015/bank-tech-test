@@ -43,22 +43,13 @@ describe('Account', () => {
 
   it('shows the date', () => {
     const account = new Account();
-    expect(account.getTransactionDate()).toEqual("24/07/2022");
+    expect(account.getTransactionDate()).toEqual("24/07/2022 ");
   })
 
-  describe('printStatement', () => {
-    xit('formats the withdrawal, deposit, balance and date into a statement', () => {
-      const account = new Account();
-      expect(account.printStatement()).toEqual("date || credit || debit || balance\n24/07/2022 || || ||")
-    })
-
-    it('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
-      const account = new Account();
-      account.deposit(100.00);
-      expect(account.printStatement()).toEqual("date || credit || debit || balance\n24/07/2022 || 100.00 || || 100.00")
-    })
+  it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
+    const account = new Account();
+    account.deposit(1000);
+    expect(account.display()).toEqual("24/07/2022 || 1000.00 || || 1000.00 ");
   })
-
- 
 
 })

@@ -1,13 +1,22 @@
+const Statement = require('./statement')
+
 class Account {
 
   constructor() {
+    this.statement = new Statement();
     this.balance = 0.00;
-    this.transactionDate = new Date().toLocaleDateString("en-GB");
-    this.transactions = [{
-      date: this.transactionDate,
-      credit: 0.00,
-      debit: 0.00,
-      balance: this.balance }];
+    this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
+    this.credit = null;
+    this.debit = null;
+  }
+
+  display() {
+    return [
+      this.transactionDate,
+      this.#formatOutput(this.credit),
+      this.#formatOutput(this.debit),
+      this.#formatOutput(this.balance),
+    ].join("|| ")
   }
 
   showBalance() {
@@ -15,23 +24,27 @@ class Account {
   }
 
   deposit(amount) {
-    this.transactions[0].credit = amount;
+    this.credit += amount;
     return this.balance += amount;
   }
 
   withdraw(amount) {
+    this.debit = amount
     return this.balance -= amount;
   }
 
   getTransactionDate() {
-    console.log(this.transactionDate)
     return this.transactionDate;
   }
 
-  printStatement() {
-    const date = this.getTransactionDate();
-    const credit = this.transactions[0].credit;
-    return `date || credit || debit || balance\n${date} || ${credit.toFixed(2)} || || ${this.balance.toFixed(2)}`;
+  printStatement(transactions) {
+    return this.statement.printStatement(transactions);
+  }
+
+  #formatOutput(item) {
+    if (item != null) {
+      return `${item.toFixed(2)} `;
+    }
   }
 }
 
