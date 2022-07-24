@@ -3,6 +3,7 @@ class Transaction {
     this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
     this.credit = credit;
     this.debit = debit;
+    this.balance = 50
   }
 
   showTransaction() {
@@ -10,7 +11,7 @@ class Transaction {
       this.transactionDate,
       this.#formatOutput(this.credit),
       this.#formatOutput(this.debit),
-      // this.#formatOutput(this.balance),
+      this.#formatOutput(this.balance),
     ].join("|| ")
   }
 

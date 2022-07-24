@@ -18,4 +18,10 @@ describe("Transaction", () => {
     const mockedDate = "24/07/2022"
     expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || 50.00 `);
   })
+
+  it("displays the balance", () => {
+    const transaction = new Transaction({ credit: 100, debit: 50 });
+    const mockedDate = "24/07/2022"
+    expect(transaction.showTransaction()).toEqual(`${mockedDate} || 100.00 || 50.00 || 50.00 `);
+  })
 })
