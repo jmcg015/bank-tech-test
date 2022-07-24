@@ -2,7 +2,12 @@ class Account {
 
   constructor() {
     this.balance = 0.00;
-    this.credits = [];
+    this.transactionDate = new Date().toLocaleDateString("en-GB");
+    this.transactions = [{
+      date: this.transactionDate,
+      credit: 0.00,
+      debit: 0.00,
+      balance: this.balance }];
   }
 
   showBalance() {
@@ -10,7 +15,7 @@ class Account {
   }
 
   deposit(amount) {
-    this.credits.push(amount);
+    this.transactions[0].credit = amount;
     return this.balance += amount;
   }
 
@@ -19,13 +24,13 @@ class Account {
   }
 
   getTransactionDate() {
-    const now = new Date();
-    return now.toLocaleDateString("en-GB");
+    console.log(this.transactionDate)
+    return this.transactionDate;
   }
 
   printStatement() {
     const date = this.getTransactionDate();
-    const credit = this.credits.at(-1);
+    const credit = this.transactions[0].credit;
     return `date || credit || debit || balance\n${date} || ${credit.toFixed(2)} || || ${this.balance.toFixed(2)}`;
   }
 }
