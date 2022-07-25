@@ -28,12 +28,13 @@ class Account {
 
   printStatement() {
     const HEADING = "date || credit || debit || balance\n";
+    console.log(HEADING)
     if (this.allTransactions.length !== 0) {
       return this.allTransactions.map((item) => {
-        return `${HEADING} ${item.showTransaction()}`;
+        return(`${item.showTransaction()}`);
       }).join("\n");
     } else {
-      return `${HEADING} || || || `;
+     console.log(` || || || `);
     }
   }
 
