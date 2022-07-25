@@ -38,3 +38,22 @@ Accounts cannot withdraw if the withdrawal amount is greater than the account ba
 account.printStatement();
 ```
 
+The program will look something like this when it has been run:
+
+![image image of bank account running](/img/bank-account.png)
+
+## Running Tests
+Tests are carried out using Jest. They can be carried out from the directory in the command line using:
+```
+npm test
+```
+
+Code coverage can be ran using:
+
+```
+npm run coverage
+```
+
+## Approaching the problem
+
+I first broke this problem down by thinking of what classes I'd ultimately need. Initially I decided on having 

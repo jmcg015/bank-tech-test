@@ -1,4 +1,3 @@
-const Statement = require('./statement')
 const Transaction = require('./transaction')
 
 class Account {
