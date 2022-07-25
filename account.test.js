@@ -23,18 +23,17 @@ describe('Account', () => {
       expect(account.withdraw(100)).toEqual("Withdrew £100.00. Balance is £900.00");
     })
 
-  //   it("won't withdraw if withdrawal is greater than balance", ()  => {
-  //     const account = new Account();
-  //     expect(account.withdraw(50)).toEqual("Must acquire additional resources")
-  //   })
+    it("won't withdraw if withdrawal is greater than balance", ()  => {
+      const account = new Account();
+      expect(account.withdraw(50)).toEqual("Must acquire additional resources")
+    })
 
-  //   it('withdraws 5.00 and 41.50 from the balance', () => {
-  //     const account = new Account();
-  //     account.deposit(50.00);
-  //     account.withdraw(5.00);
-  //     account.withdraw(41.50);
-  //     expect(account.showBalance()).toEqual(3.50);
-  //   })
+    it('withdraws 5.00 and 41.50 from the balance', () => {
+      const account = new Account();
+      account.deposit(50.00);
+      account.withdraw(5.00);
+      expect(account.withdraw(41.50)).toEqual("Withdrew £41.50. Balance is £3.50");
+    })
    })
 
   // it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
