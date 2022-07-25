@@ -35,7 +35,6 @@ class Account {
     } else {
       return `${HEADING} || || || `;
     }
-    
   }
 
   #formatMoney(value) {

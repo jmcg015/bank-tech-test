@@ -48,12 +48,4 @@ describe('Account', () => {
     const date = "24/07/2022"
     expect(account.printStatement()).toContain(`date || credit || debit || balance\n || || || `)
   })
-
-  // it('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
-  //   //const statement = new Statement();
-  //   const account = new Account();
-  //   account.deposit(100.00);
-  //   expect(account.printStatement()).toEqual("date || credit || debit || balance\n24/07/2022 || 100.00 || || 100.00 ")
-  // })
-
 })
