@@ -43,11 +43,11 @@ describe('Account', () => {
     expect(account.printStatement()).toContain(`${mockedDate} || 1000.00 || || 1000.00 `);
   })
 
-  // it('initially prints out an empty statement', () => {
-  //   const account = new Account();
-  //   const date = "24/07/2022"
-  //   expect(account.printStatement()).toEqual(`date || credit || debit || balance\n${date} || || || 0.00 `)
-  // })
+  it('initially prints out an empty statement', () => {
+    const account = new Account();
+    const date = "24/07/2022"
+    expect(account.printStatement()).toContain(`date || credit || debit || balance\n || || || `)
+  })
 
   // it('formats the withdrawal, deposit, balance and date into a statement with a deposit values', () => {
   //   //const statement = new Statement();
