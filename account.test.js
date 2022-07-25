@@ -36,11 +36,12 @@ describe('Account', () => {
     })
    })
 
-  // it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
-  //   const account = new Account();
-  //   account.deposit(1000);
-  //   expect(account.display()).toEqual("24/07/2022 || 1000.00 || || 1000.00 ");
-  // })
+  it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
+    const account = new Account();
+    const mockedDate = new Date(2022, 6, 25).toLocaleDateString("en-GB")
+    account.deposit(1000);
+    expect(account.printStatement()).toContain(`${mockedDate} || 1000.00 || || 1000.00 `);
+  })
 
   // it('initially prints out an empty statement', () => {
   //   const account = new Account();

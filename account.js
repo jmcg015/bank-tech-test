@@ -27,10 +27,10 @@ class Account {
   }
 
   printStatement() {
-    const HEADING = "date || credit || debit || balance";
+    const HEADING = "date || credit || debit || balance\n";
     return this.allTransactions.map((item) => {
-      console.log(item.showTransaction());
-    });
+      return `${HEADING} ${item.showTransaction()}`;
+    }).join("\n");
   }
 
   #formatMoney(value) {
