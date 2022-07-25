@@ -12,7 +12,8 @@ class Account {
   deposit(amount) {
     const creditAmount = this.#formatMoney(amount);
     this.balance += amount;
-    this.allTransactions.unshift(new this.transaction({ credit: amount, balance: this.balance}));
+    const newTransaction = new Transaction({ credit: amount, balance: this.balance });
+    this.allTransactions.unshift(newTransaction);
     return `£${creditAmount} deposited. Balance is £${this.#formatMoney(this.balance)}`
   }
 
@@ -20,7 +21,8 @@ class Account {
     const debitAmount = this.#formatMoney(amount);
     if (debitAmount > this.balance) return "Must acquire additional resources"
     this.balance -= amount;
-    this.allTransactions.unshift(new this.transaction({ debit: amount, balance: this.balance}))
+    const newTransaction = new Transaction({ debit: amount, balance: this.balance });
+    this.allTransactions.unshift(newTransaction);
     return `Withdrew £${debitAmount}. Balance is £${this.#formatMoney(this.balance)}`
   }
 
