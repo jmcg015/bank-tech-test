@@ -1,6 +1,6 @@
 class Transaction {
   constructor({ credit = null, debit = null, balance = null } = {}) {
-    this.transactionDate = `${new Date().toLocaleDateString("en-GB")} `;
+    this.transactionDate = new Date(Date.now());
     this.credit = credit;
     this.debit = debit;
     this.balance = balance
@@ -8,7 +8,7 @@ class Transaction {
 
   showTransaction() {
     return [
-      this.transactionDate,
+      `${this.transactionDate.toLocaleDateString("en-GB")} `,
       this.#formatOutput(this.credit),
       this.#formatOutput(this.debit),
       this.#formatOutput(this.balance),
