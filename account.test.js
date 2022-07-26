@@ -1,7 +1,13 @@
 const Account = require('./account');
 
 describe('Account', () => {
-  })
+  beforeAll(() => {
+    jest.spyOn(Date, "now").mockImplementation(() => new Date("2022-07-25"));
+  });
+
+  afterAll(() => {
+    Date.now.mockRestore();
+  });
 
   describe('Deposit', () => {
     it("adds 500 to the balance", () => {
@@ -14,6 +20,7 @@ describe('Account', () => {
       account.deposit(50.50);
       expect(account.deposit(1000.00)).toEqual("£1000.00 deposited. Balance is £1050.50");
     })
+  })
 
 
   describe('Withdraw', () => {
@@ -38,9 +45,8 @@ describe('Account', () => {
 
   it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
     const account = new Account();
-    const mockedDate = new Date(2022, 6, 25).toLocaleDateString("en-GB")
     account.deposit(1000);
-    expect(account.printStatement()).toContain(`${mockedDate} || 1000.00 || || 1000.00 `);
+    expect(account.printStatement()).toContain(`25/07/2022 || 1000.00 || || 1000.00 `);
   })
 
   it('initially prints out an empty statement', () => {
@@ -48,6 +54,5 @@ describe('Account', () => {
     const spy = jest.spyOn(console, 'log');
     console.log("date || credit || debit || balance\n || || || ")
     expect(spy).toHaveBeenCalledWith("date || credit || debit || balance\n || || || ")
-    //expect(account.printStatement()).toContain(`date || credit || debit || balance\n || || || `)
   })
 })
