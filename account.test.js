@@ -70,9 +70,20 @@ describe('Account', () => {
 
   // it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
   //   const account = new Account();
-  //   account.deposit(1000);
-  //   expect(account.printStatement()).toContain(`25/07/2022 || 1000.00 || || 1000.00 `);
+  //   const spy = jest.spyOn(account, 'deposit')
+  //   const mockTransaction = {
+  //     showTransaction: () => " || 1000.00 || || 1000.00"
+  //   }
+  //   mockTransaction.showTransaction();
+  //   account.deposit(1000)
+  //   expect(spy).toHaveBeenCalledWith(1000)
+  //   expect(account.printStatement()).toEqual(`25/07/2022 || 1000.00 || || 1000.00 `);
   // })
+
+  it('returns the headings DATE || CREDIT || DEBIT || BALANCE', () => {
+    const account = new Account();
+    expect(account.printHeading()).toEqual("DATE || CREDIT || DEBIT || BALANCE")
+  })
 
   it('initially prints out an empty statement', () => {
     const account = new Account();

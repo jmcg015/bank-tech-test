@@ -41,6 +41,10 @@ class Account {
     }
   }
 
+  printHeading() {
+    return "DATE || CREDIT || DEBIT || BALANCE"
+  }
+
   #formatMoney(value) {
     return value.toFixed(2);
   }
