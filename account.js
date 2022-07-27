@@ -31,8 +31,8 @@ class Account {
 
   printStatement() {
     if (this.allTransactions.length !== 0) {
-      return this.allTransactions.map((item) => {
-        return(`${this.printHeading()}${item.showTransaction()}`);
+      return this.printHeading() + this.allTransactions.map((item) => {
+        return(`${item.showTransaction()}`);
       }).join("\n");
     } else {
      console.log(` || || || `);
