@@ -41,6 +41,12 @@ describe('Account', () => {
       account.withdraw(5.00);
       expect(account.withdraw(41.50)).toEqual("Withdrew £41.50. Balance is £3.50");
     })
+
+    it("does not let you withdraw a negative number", () => {
+      const account = new Account();
+      account.setBalance(45.00);
+      expect(account.withdraw(-10)).toEqual("Withdrawal amount must be positive")
+    })
    })
 
   it('formats the information to display like: DATE || CREDIT || DEBIT || BALANCE', () => {
@@ -49,10 +55,8 @@ describe('Account', () => {
     expect(account.printStatement()).toContain(`25/07/2022 || 1000.00 || || 1000.00 `);
   })
 
-  it('initially prints out an empty statement', () => {
+  it('returns the headings DATE || CREDIT || DEBIT || BALANCE\n', () => {
     const account = new Account();
-    const spy = jest.spyOn(console, 'log');
-    console.log("date || credit || debit || balance\n || || || ")
-    expect(spy).toHaveBeenCalledWith("date || credit || debit || balance\n || || || ")
+    expect(account.printHeading()).toEqual("DATE || CREDIT || DEBIT || BALANCE\n")
   })
 })

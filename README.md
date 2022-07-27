@@ -72,3 +72,8 @@ Moving this functionality to a separate class made it much easier for me to outp
 
 After implementing this in the printStatement() function, I decided against keeping a statement class it was one function pulling the data in from the Transaction class and then mapped through in printStatement. I believed that creating a new class would overly complicate what was already a fairly minimal solution. 
 
+After some refactoring, I have fixed the mocks in the tests which were initially causing a few problems. I thought I had mocked it correctly, but had gone about it slightly differently to the resources I checked which caused some confusion. 
+
+Due to how the Transaction class worked, creating a mock of that class in the Account unit tests proved to be a challenge, especially for tests which required a deposit to be made first prior to a testing the withdrawal. I decided to create an setBalance method, thinking that when bank accounts open you can have funds transferred in as the starting balance. It definitely isn't perfect but without completely re-working the Transaction class I cannot seem to find a solution for testing. 
+
+I also added validation for not allowing withdrawals of negative numbers. 
