@@ -66,6 +66,17 @@ describe('Account', () => {
 
       expect(account.withdraw(41.50)).toEqual("Withdrew £41.50. Balance is £3.50");
     })
+
+    it("does not let you withdraw a negative number", () => {
+      const account = new Account();
+      account.setBalance(45.00);
+      const mockWithdrawal = {
+        showTransaction: () => " || || 41.50 || 3.50"
+      }
+
+      mockWithdrawal.showTransaction()
+      expect(account.withdraw(-10)).toEqual("Withdrawal amount must be positive")
+    })
    })
 
   it('returns the headings DATE || CREDIT || DEBIT || BALANCE\n', () => {

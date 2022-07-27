@@ -21,12 +21,17 @@ class Account {
   }
 
   withdraw(amount) {
-    const debitAmount = this.#formatMoney(amount);
-    if (debitAmount > this.balance) return "Must acquire additional resources"
-    this.balance -= amount;
-    const newTransaction = new Transaction({ debit: amount, balance: this.balance });
-    this.allTransactions.unshift(newTransaction);
-    return `Withdrew £${debitAmount}. Balance is £${this.#formatMoney(this.balance)}`
+    if (this.#checkWithdrawal(amount)){
+      const debitAmount = this.#formatMoney(amount);
+      if (debitAmount > this.balance) return "Must acquire additional resources"
+      this.balance -= amount;
+      const newTransaction = new Transaction({ debit: amount, balance: this.balance });
+      this.allTransactions.unshift(newTransaction);
+      return `Withdrew £${debitAmount}. Balance is £${this.#formatMoney(this.balance)}`
+    } else {
+      return "Withdrawal amount must be positive";
+    }
+    
   }
 
   printStatement() {
@@ -41,6 +46,10 @@ class Account {
 
   printHeading() {
     return "DATE || CREDIT || DEBIT || BALANCE\n"
+  }
+
+  #checkWithdrawal(amount) {
+    return (amount < 0 ? false : true) 
   }
 
   #formatMoney(value) {
