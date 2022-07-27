@@ -80,9 +80,9 @@ describe('Account', () => {
   //   expect(account.printStatement()).toEqual(`25/07/2022 || 1000.00 || || 1000.00 `);
   // })
 
-  it('returns the headings DATE || CREDIT || DEBIT || BALANCE', () => {
+  it('returns the headings DATE || CREDIT || DEBIT || BALANCE\n', () => {
     const account = new Account();
-    expect(account.printHeading()).toEqual("DATE || CREDIT || DEBIT || BALANCE")
+    expect(account.printHeading()).toEqual("DATE || CREDIT || DEBIT || BALANCE\n")
   })
 
   it('initially prints out an empty statement', () => {

@@ -30,11 +30,9 @@ class Account {
   }
 
   printStatement() {
-    const HEADING = "date || credit || debit || balance\n";
-    console.log(HEADING)
     if (this.allTransactions.length !== 0) {
       return this.allTransactions.map((item) => {
-        return(`${item.showTransaction()}`);
+        return(`${this.printHeading()}${item.showTransaction()}`);
       }).join("\n");
     } else {
      console.log(` || || || `);
@@ -42,7 +40,7 @@ class Account {
   }
 
   printHeading() {
-    return "DATE || CREDIT || DEBIT || BALANCE"
+    return "DATE || CREDIT || DEBIT || BALANCE\n"
   }
 
   #formatMoney(value) {
