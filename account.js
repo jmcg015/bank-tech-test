@@ -8,6 +8,10 @@ class Account {
     this.allTransactions = [];
   }
 
+  setBalance(amount) {
+    this.balance += amount;
+  }
+
   deposit(amount) {
     const creditAmount = this.#formatMoney(amount);
     this.balance += amount;
